@@ -1,0 +1,386 @@
+drop index FECHA_CONTROL_LF;
+
+drop index FECHA_ATENCION_LF;
+
+drop index ID_PERSONAL_LF2;
+
+drop index ID_MADRE_LF;
+
+drop index ID_SALA_LF;
+
+drop table ATENCION;
+
+drop index CEDULA_M_LF;
+
+drop index NACIONALIDAD_M_LF;
+
+drop index FNACIMIENTO_M_LF;
+
+drop index CORREO_M_LF;
+
+drop index TELEFONO2_M_LF;
+
+drop index TELEFONO_M_LF;
+
+drop index APELLIDO_M_LF;
+
+drop index NOMBRE_M_LF;
+
+drop table MADRES;
+
+drop index POST_MANTENIMIENTO_LF;
+
+drop index PRE_MANTENIMIENTO_LF;
+
+drop table MANTENIMIENTO;
+
+drop index NACIONALIDAD__P_LF;
+
+drop index CEDULA_P_LF;
+
+drop index APELLIDO_P_LF;
+
+drop index NOMBRE_P_LF;
+
+drop table PERSONAL;
+
+drop index RESERVA_S_LF;
+
+drop table SALAS;
+
+drop index TIPO_ATENCION_LF;
+
+drop index ID_TIPOATENCION_LF;
+
+drop index ID_ATENCION_LF;
+
+drop table TIPO_DE_ATENCIONES;
+
+drop index CARGO_LF;
+
+drop index ID_TIPOPERSONAL_LF;
+
+drop index ID_PERSONAL_LF;
+
+drop table TIPO_PERSONAL;
+
+drop index TIPO_SALA_LF;
+
+drop index ID_SALA_LF2;
+
+drop table TIPO_SALA;
+
+/*==============================================================*/
+/* Table: ATENCION                                              */
+/*==============================================================*/
+create table ATENCION (
+ID_ATENCION          INT4                 not null,
+ID_SALA              INT4                 null,
+ID_MADRE             INT4                 null,
+ID_PERSONAL          INT4                 null,
+FECHA_ATENCION       DATE                 null,
+FECHA_CONTROL        DATE                 null,
+constraint PK_ATENCION primary key (ID_ATENCION)
+);
+
+/*==============================================================*/
+/* Index: ID_SALA_LF                                            */
+/*==============================================================*/
+create  index ID_SALA_LF on ATENCION (
+ID_SALA
+);
+
+/*==============================================================*/
+/* Index: ID_MADRE_LF                                           */
+/*==============================================================*/
+create  index ID_MADRE_LF on ATENCION (
+ID_MADRE
+);
+
+/*==============================================================*/
+/* Index: ID_PERSONAL_LF2                                       */
+/*==============================================================*/
+create  index ID_PERSONAL_LF2 on ATENCION (
+ID_PERSONAL
+);
+
+/*==============================================================*/
+/* Index: FECHA_ATENCION_LF                                     */
+/*==============================================================*/
+create  index FECHA_ATENCION_LF on ATENCION (
+FECHA_ATENCION
+);
+
+/*==============================================================*/
+/* Index: FECHA_CONTROL_LF                                      */
+/*==============================================================*/
+create  index FECHA_CONTROL_LF on ATENCION (
+FECHA_CONTROL
+);
+
+/*==============================================================*/
+/* Table: MADRES                                                */
+/*==============================================================*/
+create table MADRES (
+ID_MADRE             INT4                 not null,
+NOMBRE_M             VARCHAR(15)          null,
+APELLIDO_M           VARCHAR(15)          null,
+TELEFONO_M           VARCHAR(10)          null,
+TELEFONO2_M          VARCHAR(10)          null,
+CORREO_M             VARCHAR(20)          null,
+FNACIMIENTO_M        DATE                 null,
+NACIONALIDAD_M       VARCHAR(15)          null,
+CEDULA_M             VARCHAR(15)          null,
+constraint PK_MADRES primary key (ID_MADRE)
+);
+
+/*==============================================================*/
+/* Index: NOMBRE_M_LF                                           */
+/*==============================================================*/
+create  index NOMBRE_M_LF on MADRES (
+NOMBRE_M
+);
+
+/*==============================================================*/
+/* Index: APELLIDO_M_LF                                         */
+/*==============================================================*/
+create  index APELLIDO_M_LF on MADRES (
+APELLIDO_M
+);
+
+/*==============================================================*/
+/* Index: TELEFONO_M_LF                                         */
+/*==============================================================*/
+create  index TELEFONO_M_LF on MADRES (
+TELEFONO_M
+);
+
+/*==============================================================*/
+/* Index: TELEFONO2_M_LF                                        */
+/*==============================================================*/
+create  index TELEFONO2_M_LF on MADRES (
+TELEFONO2_M
+);
+
+/*==============================================================*/
+/* Index: CORREO_M_LF                                           */
+/*==============================================================*/
+create  index CORREO_M_LF on MADRES (
+CORREO_M
+);
+
+/*==============================================================*/
+/* Index: FNACIMIENTO_M_LF                                      */
+/*==============================================================*/
+create  index FNACIMIENTO_M_LF on MADRES (
+FNACIMIENTO_M
+);
+
+/*==============================================================*/
+/* Index: NACIONALIDAD_M_LF                                     */
+/*==============================================================*/
+create  index NACIONALIDAD_M_LF on MADRES (
+NACIONALIDAD_M
+);
+
+/*==============================================================*/
+/* Index: CEDULA_M_LF                                           */
+/*==============================================================*/
+create  index CEDULA_M_LF on MADRES (
+CEDULA_M
+);
+
+/*==============================================================*/
+/* Table: MANTENIMIENTO                                         */
+/*==============================================================*/
+create table MANTENIMIENTO (
+ID_MANTENIMIENTO     INT4                 not null,
+PRE_MANTENIMIENTO    VARCHAR(20)          null,
+POST_MANTENIMIENTO   VARCHAR(20)          null,
+constraint PK_MANTENIMIENTO primary key (ID_MANTENIMIENTO)
+);
+
+/*==============================================================*/
+/* Index: PRE_MANTENIMIENTO_LF                                  */
+/*==============================================================*/
+create  index PRE_MANTENIMIENTO_LF on MANTENIMIENTO (
+PRE_MANTENIMIENTO
+);
+
+/*==============================================================*/
+/* Index: POST_MANTENIMIENTO_LF                                 */
+/*==============================================================*/
+create  index POST_MANTENIMIENTO_LF on MANTENIMIENTO (
+POST_MANTENIMIENTO
+);
+
+/*==============================================================*/
+/* Table: PERSONAL                                              */
+/*==============================================================*/
+create table PERSONAL (
+ID_PERSONAL          INT4                 not null,
+NOMBRE_P             VARCHAR(15)          null,
+APELLIDO_P           VARCHAR(15)          null,
+CEDULA_P             VARCHAR(15)          null,
+NACIONALIDAD__P      VARCHAR(15)          null,
+constraint PK_PERSONAL primary key (ID_PERSONAL)
+);
+
+/*==============================================================*/
+/* Index: NOMBRE_P_LF                                           */
+/*==============================================================*/
+create  index NOMBRE_P_LF on PERSONAL (
+NOMBRE_P
+);
+
+/*==============================================================*/
+/* Index: APELLIDO_P_LF                                         */
+/*==============================================================*/
+create  index APELLIDO_P_LF on PERSONAL (
+APELLIDO_P
+);
+
+/*==============================================================*/
+/* Index: CEDULA_P_LF                                           */
+/*==============================================================*/
+create  index CEDULA_P_LF on PERSONAL (
+CEDULA_P
+);
+
+/*==============================================================*/
+/* Index: NACIONALIDAD__P_LF                                    */
+/*==============================================================*/
+create  index NACIONALIDAD__P_LF on PERSONAL (
+NACIONALIDAD__P
+);
+
+/*==============================================================*/
+/* Table: SALAS                                                 */
+/*==============================================================*/
+create table SALAS (
+ID_SALA              INT4                 not null,
+RESERVA_S            DATE                 null,
+constraint PK_SALAS primary key (ID_SALA)
+);
+
+/*==============================================================*/
+/* Index: RESERVA_S_LF                                          */
+/*==============================================================*/
+create  index RESERVA_S_LF on SALAS (
+RESERVA_S
+);
+
+/*==============================================================*/
+/* Table: TIPO_DE_ATENCIONES                                    */
+/*==============================================================*/
+create table TIPO_DE_ATENCIONES (
+ID_ATENCION          INT4                 null,
+ID_TIPOATENCION      INT4                 null,
+TIPO_ATENCION        VARCHAR(20)          null
+);
+
+/*==============================================================*/
+/* Index: ID_ATENCION_LF                                        */
+/*==============================================================*/
+create  index ID_ATENCION_LF on TIPO_DE_ATENCIONES (
+ID_ATENCION
+);
+
+/*==============================================================*/
+/* Index: ID_TIPOATENCION_LF                                    */
+/*==============================================================*/
+create  index ID_TIPOATENCION_LF on TIPO_DE_ATENCIONES (
+ID_TIPOATENCION
+);
+
+/*==============================================================*/
+/* Index: TIPO_ATENCION_LF                                      */
+/*==============================================================*/
+create  index TIPO_ATENCION_LF on TIPO_DE_ATENCIONES (
+TIPO_ATENCION
+);
+
+/*==============================================================*/
+/* Table: TIPO_PERSONAL                                         */
+/*==============================================================*/
+create table TIPO_PERSONAL (
+ID_PERSONAL          INT4                 null,
+ID_TIPOPERSONAL      INT4                 null,
+CARGO                VARCHAR(15)          null
+);
+
+/*==============================================================*/
+/* Index: ID_PERSONAL_LF                                        */
+/*==============================================================*/
+create  index ID_PERSONAL_LF on TIPO_PERSONAL (
+ID_PERSONAL
+);
+
+/*==============================================================*/
+/* Index: ID_TIPOPERSONAL_LF                                    */
+/*==============================================================*/
+create  index ID_TIPOPERSONAL_LF on TIPO_PERSONAL (
+ID_TIPOPERSONAL
+);
+
+/*==============================================================*/
+/* Index: CARGO_LF                                              */
+/*==============================================================*/
+create  index CARGO_LF on TIPO_PERSONAL (
+CARGO
+);
+
+/*==============================================================*/
+/* Table: TIPO_SALA                                             */
+/*==============================================================*/
+create table TIPO_SALA (
+ID_TIPOSDESALA       INT4                 not null,
+ID_SALA              INT4                 null,
+TIPO_SALA            VARCHAR(25)          null,
+constraint PK_TIPO_SALA primary key (ID_TIPOSDESALA)
+);
+
+/*==============================================================*/
+/* Index: ID_SALA_LF2                                           */
+/*==============================================================*/
+create  index ID_SALA_LF2 on TIPO_SALA (
+ID_SALA
+);
+
+/*==============================================================*/
+/* Index: TIPO_SALA_LF                                          */
+/*==============================================================*/
+create  index TIPO_SALA_LF on TIPO_SALA (
+TIPO_SALA
+);
+
+alter table ATENCION
+   add constraint FK_ATENCION_RELATIONS_MADRES foreign key (ID_MADRE)
+      references MADRES (ID_MADRE)
+      on delete restrict on update restrict;
+
+alter table ATENCION
+   add constraint FK_ATENCION_RELATIONS_PERSONAL foreign key (ID_PERSONAL)
+      references PERSONAL (ID_PERSONAL)
+      on delete restrict on update restrict;
+
+alter table ATENCION
+   add constraint FK_ATENCION_RELATIONS_SALAS foreign key (ID_SALA)
+      references SALAS (ID_SALA)
+      on delete restrict on update restrict;
+
+alter table TIPO_DE_ATENCIONES
+   add constraint FK_TIPO_DE__RELATIONS_ATENCION foreign key (ID_ATENCION)
+      references ATENCION (ID_ATENCION)
+      on delete restrict on update restrict;
+
+alter table TIPO_PERSONAL
+   add constraint FK_TIPO_PER_RELATIONS_PERSONAL foreign key (ID_PERSONAL)
+      references PERSONAL (ID_PERSONAL)
+      on delete restrict on update restrict;
+
+alter table TIPO_SALA
+   add constraint FK_TIPO_SAL_RELATIONS_SALAS foreign key (ID_SALA)
+      references SALAS (ID_SALA)
+      on delete restrict on update restrict;
+
